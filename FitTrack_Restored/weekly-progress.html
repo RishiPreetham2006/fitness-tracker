@@ -1,0 +1,291 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack - Weekly Progress</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .weekly-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .report-header h1 {
+            color: #16a34a;
+        }
+
+        .report-buttons button {
+            padding: 12px 18px;
+            margin: 5px;
+            border: none;
+            border-radius: 8px;
+            background: #16a34a;
+            color: white;
+            cursor: pointer;
+        }
+
+        .weekly-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .weekly-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000015;
+        }
+
+        .weekly-card h3 {
+            color: #555;
+        }
+
+        .weekly-card h2 {
+            color: #16a34a;
+            margin-top: 12px;
+        }
+
+        .weekly-chart {
+            background: white;
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000015;
+        }
+
+        .chart-bars {
+            height: 250px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            gap: 12px;
+            padding-top: 20px;
+        }
+
+        .day {
+            flex: 1;
+            text-align: center;
+        }
+
+        .bar {
+            width: 100%;
+            max-width: 45px;
+            margin: auto;
+            background: #16a34a;
+            border-radius: 7px 7px 0 0;
+            min-height: 3px;
+        }
+
+        .day span {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .report-details {
+            background: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 12px;
+            box-shadow: 0 3px 12px #00000015;
+        }
+
+        .report-details p {
+            margin: 15px 0;
+        }
+
+        @media print {
+            .report-buttons, nav, .login-btn {
+                display: none !important;
+            }
+
+            .weekly-container {
+                margin: 0;
+            }
+
+            body {
+                background: white;
+            }
+        }
+    </style>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitTrack Weekly report</title>
+</head>
+<body>
+
+    <h1>FitTrack - Weekly Progress</h1>
+
+    <h2>Welcome to Weekly Report!</h2>
+
+    <p>Your weekly fitness report page is working.</p>
+
+    <a href="fitness.html">Back to Dashboard</a>
+
+    <script src="daily-log.js"></script>
+<script src="fittrack-nav.js"></script>
+</body>
+</html>
+
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">Fit<span>Track</span></div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="fitness.html#dashboard">Dashboard</a>
+        <a href="fitness.html#workouts">Workouts</a>
+        <a href="weekly-progress.html">Weekly Report</a>
+    </nav>
+</header>
+
+<main class="weekly-container">
+
+    <div class="report-header">
+        <div>
+            <h1>Weekly Progress Report</h1>
+            <p>Your weekly fitness performance overview</p>
+        </div>
+
+        <div class="report-buttons">
+            <button onclick="window.print()">Print Report</button>
+            <button onclick="downloadReport()">Download Report</button>
+        </div>
+    </div>
+
+    <div class="weekly-stats">
+
+        <div class="weekly-card">
+            <h3>👟 Total Steps</h3>
+            <h2 id="totalSteps">0</h2>
+            <p>This week</p>
+        </div>
+
+        <div class="weekly-card">
+            <h3>🔥 Calories</h3>
+            <h2 id="totalCalories">0</h2>
+            <p>Recorded this week</p>
+        </div>
+
+        <div class="weekly-card">
+            <h3>💧 Water</h3>
+            <h2 id="totalWater">0</h2>
+            <p>Glasses this week</p>
+        </div>
+
+        <div class="weekly-card">
+            <h3>😴 Average Sleep</h3>
+            <h2 id="averageSleep">0 hrs</h2>
+            <p>Per day</p>
+        </div>
+
+    </div>
+
+    <section class="weekly-chart">
+        <h2>Daily Steps Performance</h2>
+
+        <div class="chart-bars" id="chartBars">
+        </div>
+    </section>
+
+    <section class="report-details">
+        <h2>Weekly Summary</h2>
+
+        <p><strong>Total Workouts:</strong>
+            <span id="totalWorkouts">0</span>
+        </p>
+
+        <p><strong>Average Daily Steps:</strong>
+            <span id="averageSteps">0</span>
+        </p>
+
+        <p><strong>Best Performance Day:</strong>
+            <span id="bestDay">--</span>
+        </p>
+
+        <p><strong>Weekly Step Goal:</strong>
+            <span id="goalStatus">0%</span>
+        </p>
+
+    </section>
+
+</main>
+
+<script>
+function loadWeeklyReport() {
+    if (typeof window.recordDailySnapshot === "function") window.recordDailySnapshot();
+    const data = JSON.parse(localStorage.getItem("weeklyHistory") || "[]").slice(-7);
+    const totals = data.reduce((sum, day) => {
+        sum.steps += Number(day.steps || 0);
+        sum.calories += Number(day.calories || 0);
+        sum.water += Number(day.water || 0);
+        sum.sleep += Number(day.sleep || 0);
+        sum.workouts += Number(day.workouts || 0);
+        return sum;
+    }, { steps: 0, calories: 0, water: 0, sleep: 0, workouts: 0 });
+    const days = Math.max(data.length, 1);
+    const setText = (id, value) => {
+        const element = document.getElementById(id);
+        if (element) element.textContent = value;
+    };
+    setText("totalSteps", totals.steps.toLocaleString());
+    setText("totalCalories", totals.calories.toLocaleString());
+    setText("totalWater", totals.water.toLocaleString());
+    setText("averageSleep", (totals.sleep / days).toFixed(1) + " hrs");
+    setText("totalWorkouts", totals.workouts.toLocaleString());
+    setText("averageSteps", Math.round(totals.steps / days).toLocaleString());
+    const best = data.reduce((a, b) => Number(a.steps || 0) > Number(b.steps || 0) ? a : b, { day: "--", steps: 0 });
+    setText("bestDay", best.day || "--");
+    setText("goalStatus", Math.min(100, Math.round(totals.steps / (days * 10000) * 100)) + "%");
+
+    const chart = document.getElementById("chartBars");
+    if (!chart) return;
+    chart.replaceChildren();
+    if (!data.length) {
+        chart.textContent = "No weekly records available yet. Add activity to start tracking.";
+        return;
+    }
+    const maxSteps = Math.max(...data.map(day => Number(day.steps || 0)), 1);
+    data.forEach(day => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "day";
+        const bar = document.createElement("div");
+        bar.className = "bar";
+        bar.style.height = Math.max(6, Number(day.steps || 0) / maxSteps * 200) + "px";
+        bar.setAttribute("title", Number(day.steps || 0).toLocaleString() + " steps");
+        const label = document.createElement("span");
+        label.textContent = day.day || day.date || "";
+        const count = document.createElement("small");
+        count.textContent = Number(day.steps || 0).toLocaleString();
+        wrapper.append(bar, label, count);
+        chart.appendChild(wrapper);
+    });
+}
+function downloadReport() { window.print(); }
+document.addEventListener("DOMContentLoaded", loadWeeklyReport);
+</script>
+
+    <script src="daily-log.js"></script>
+
+</body>
+</html>

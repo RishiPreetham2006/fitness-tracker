@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Calories - FitTrack</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #063b35, #00b894);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .calories-container {
+            width: 420px;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .logo {
+            font-size: 30px;
+            font-weight: bold;
+            color: #063b35;
+            margin-bottom: 10px;
+        }
+
+        .logo span {
+            color: #00b894;
+        }
+
+        .calories-icon {
+            font-size: 70px;
+            margin: 15px 0;
+        }
+
+        h1 {
+            color: #222;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #777;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #00b894;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #00e5a8, #00b894);
+            color: #063b35;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 184, 148, 0.3);
+        }
+
+        .message {
+            margin-top: 18px;
+            min-height: 22px;
+            font-weight: bold;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            color: #063b35;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back:hover {
+            color: #00b894;
+        }
+
+        @media (max-width: 500px) {
+            .calories-container {
+                width: 100%;
+                padding: 30px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calories-container">
+
+        <div class="logo">
+            Fit<span>Track</span>
+        </div>
+
+        <div class="calories-icon">🔥</div>
+
+        <h1>Add Calories</h1>
+
+        <p class="subtitle">
+            Enter the calories you consumed today.
+        </p>
+
+        <div class="input-group">
+
+            <label for="calories">
+                Calories
+            </label>
+
+            <input
+                type="number"
+                id="calories"
+                placeholder="Enter calories"
+                min="1"
+            >
+
+        </div>
+
+        <button onclick="saveCalories()">
+            Add Calories
+        </button>
+
+        <div class="message" id="message"></div>
+
+        <a href="fitness.html" class="back">
+            ← Back to Dashboard
+        </a>
+
+    </div>
+
+    <script>
+        function saveCalories() {
+
+            const calories =
+                document.getElementById("calories").value;
+
+            const message =
+                document.getElementById("message");
+
+            if (calories === "" || calories <= 0) {
+
+                message.style.color = "red";
+
+                message.textContent =
+                    "Please enter a valid calorie amount.";
+
+                return;
+            }
+
+            localStorage.setItem(
+                "todayCalories",
+                calories
+            );
+
+            message.style.color = "#00a884";
+
+            message.textContent =
+                calories +
+                " calories added successfully!";
+
+            setTimeout(function () {
+                window.location.href = "fitness.html";
+            }, 1000);
+        }
+    </script>
+
+    <script src="daily-log.js"></script>
+<script src="fittrack-nav.js"></script>
+</body>
+</html>

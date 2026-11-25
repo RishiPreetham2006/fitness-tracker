@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FitTrack - Add Steps</title>
+
+    <link rel="stylesheet" href="step.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo">
+            Fit<span>Track</span>
+        </div>
+
+        <a href="fitness.html"
+           class="back-btn">
+
+            ← Dashboard
+
+        </a>
+
+    </header>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="steps-page">
+
+
+        <!-- ================= TITLE ================= -->
+
+        <section class="page-title">
+
+            <div class="steps-icon">
+                👟
+            </div>
+
+            <h1>
+                Add Steps
+            </h1>
+
+            <p>
+                Track your daily walking and reach your step goal.
+            </p>
+
+        </section>
+
+
+
+        <!-- ================= STEPS CARD ================= -->
+
+        <section class="steps-card">
+
+
+            <div class="current-steps">
+
+                <span>
+                    Today's Steps
+                </span>
+
+                <strong id="stepsValue">
+                    7,250
+                </strong>
+
+                <small>
+                    Goal: 10,000 steps
+                </small>
+
+            </div>
+
+
+
+            <!-- ================= PROGRESS ================= -->
+
+            <div class="progress-section">
+
+                <div class="progress-info">
+
+                    <span>
+                        Daily Progress
+                    </span>
+
+                    <strong id="progressPercent">
+                        72.5%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div id="stepsProgress"
+                         class="progress-fill">
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= QUICK ADD ================= -->
+
+            <h2>
+                Quick Add
+            </h2>
+
+
+            <div class="quick-add">
+
+                <button onclick="addSteps(500)">
+
+                    👟 +500 Steps
+
+                </button>
+
+
+                <button onclick="addSteps(1000)">
+
+                    👟 +1,000 Steps
+
+                </button>
+
+
+                <button onclick="addSteps(2000)">
+
+                    👟 +2,000 Steps
+
+                </button>
+
+            </div>
+
+
+
+            <!-- ================= CUSTOM STEPS ================= -->
+
+            <div class="custom-section">
+
+                <h2>
+                    Add Custom Steps
+                </h2>
+
+                <div class="custom-input">
+
+                    <input
+                        type="number"
+                        id="customSteps"
+                        placeholder="Enter steps"
+                        min="1"
+                    >
+
+                    <button onclick="addCustomSteps()">
+
+                        Add Steps
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= MESSAGE ================= -->
+
+            <p id="message"
+               class="message">
+            </p>
+
+
+
+            <!-- ================= RESET ================= -->
+
+            <button
+                class="reset-btn"
+                onclick="resetSteps()">
+
+                🔄 Reset Today's Steps
+
+            </button>
+
+
+        </section>
+
+
+
+        <!-- ================= MOTIVATION ================= -->
+
+        <section class="motivation-card">
+
+            <div>
+                💪
+            </div>
+
+            <h2>
+                Keep Moving!
+            </h2>
+
+            <p>
+                Every step takes you closer to a healthier you.
+            </p>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 FitTrack. Stay Active. Stay Healthy.
+        </p>
+
+    </footer>
+
+
+
+    <script src="step.js"></script>
+
+    <script src="daily-log.js"></script>
+<script src="fittrack-nav.js"></script>
+</body>
+
+</html>

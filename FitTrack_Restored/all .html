@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitTrack - Fitness Tracker</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#f4f6f9;
+}
+
+header{
+    background:#2c3e50;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+nav{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    background:#34495e;
+    padding:12px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+.container{
+    max-width:1200px;
+    margin:20px auto;
+    padding:20px;
+}
+
+.section-title{
+    margin-bottom:15px;
+    color:#2c3e50;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,.1);
+}
+
+.goal-card{
+    cursor:pointer;
+    transition:.3s;
+}
+
+.goal-card:hover{
+    transform:translateY(-5px);
+}
+
+.progress{
+    height:10px;
+    background:#ddd;
+    border-radius:20px;
+    overflow:hidden;
+    margin-top:10px;
+}
+
+.progress div{
+    height:100%;
+    background:#27ae60;
+}
+
+.workout-list li{
+    padding:10px;
+    border-bottom:1px solid #eee;
+}
+
+footer{
+    margin-top:40px;
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:20px;
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    left:0;
+    top:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,.6);
+}
+
+.modal-content{
+    background:white;
+    width:90%;
+    max-width:500px;
+    margin:8% auto;
+    padding:25px;
+    border-radius:12px;
+    position:relative;
+}
+
+.close{
+    position:absolute;
+    right:15px;
+    top:10px;
+    font-size:28px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>🏋️ FitTrack</h1>
+<p>Track Your Fitness Journey</p>
+</header>
+
+<nav>
+<a href="#dashboard">Dashboard</a>
+<a href="#goals">Goals</a>
+<a href="#workouts">Workouts</a>
+<a href="#nutrition">Nutrition</a>
+<a href="#profile">Profile</a>
+</nav>
+
+<div class="container">
+
+<section id="dashboard">
+<h2 class="section-title">Dashboard</h2>
+
+<div class="cards">
+<div class="card">
+<h3>Today's Steps</h3>
+<h1>7,200</h1>
+</div>
+
+<div class="card">
+<h3>Calories Burned</h3>
+<h1>1,550</h1>
+</div>
+
+<div class="card">
+<h3>Workout Time</h3>
+<h1>55 min</h1>
+</div>
+
+<div class="card">
+<h3>Water Intake</h3>
+<h1>2.4 L</h1>
+</div>
+</div>
+
+</section>
+
+<br><br>
+
+<section id="goals">
+
+<h2 class="section-title">Fitness Goals</h2>
+
+<div class="cards">
+
+<div class="card goal-card" onclick="openGoal('steps')">
+<h3>🎯 Daily Steps</h3>
+<p>10,000 Goal</p>
+
+<div class="progress">
+<div style="width:72%"></div>
+</div>
+
+<p>72% Complete</p>
+</div>
+
+<div class="card goal-card" onclick="openGoal('calories')">
+<h3>🔥 Weekly Calories</h3>
+<p>15,000 kcal Goal</p>
+
+<div class="progress">
+<div style="width:68%"></div>
+</div>
+
+<p>68% Complete</p>
+</div>
+
+<div class="card goal-card" onclick="openGoal('workout')">
+<h3>🏃 Workout Goal</h3>
+<p>5 Workouts Weekly</p>
+
+<div class="progress">
+<div style="width:80%"></div>
+</div>
+
+<p>4 / 5 Completed</p>
+</div>
+
+</div>
+
+</section>
+
+<br><br>
+
+<section id="workouts">
+
+<h2 class="section-title">Workout Planner</h2>
+
+<div class="card">
+<ul class="workout-list">
+<li>✅ Monday - Full Body Workout</li>
+<li>✅ Tuesday - Cardio</li>
+<li>✅ Wednesday - Yoga</li>
+<li>✅ Thursday - HIIT</li>
+<li>⭕ Friday - Strength Training</li>
+</ul>
+</div>
+
+</section>
+
+<br><br>
+
+<section id="nutrition">
+
+<h2 class="section-title">Nutrition Tracker</h2>
+
+<div class="cards">
+
+<div class="card">
+<h3>Protein</h3>
+<p>120g / 150g</p>
+</div>
+
+<div class="card">
+<h3>Carbohydrates</h3>
+<p>210g / 250g</p>
+</div>
+
+<div class="card">
+<h3>Fats</h3>
+<p>50g / 70g</p>
+</div>
+
+</div>
+
+</section>
+
+<br><br>
+
+<section id="profile">
+
+<h2 class="section-title">Profile</h2>
+
+<div class="card">
+<h3>John Doe</h3>
+<p>Age: 28</p>
+<p>Weight: 75 kg</p>
+<p>Height: 175 cm</p>
+<p>Fitness Goal: Build Muscle</p>
+</div>
+
+</section>
+
+</div>
+
+<div id="goalModal" class="modal">
+<div class="modal-content">
+
+<span class="close" onclick="closeModal()">&times;</span>
+
+<h2 id="goalTitle"></h2>
+
+<div id="goalContent"></div>
+
+</div>
+</div>
+
+<footer>
+<p>© 2026 FitTrack. All rights reserved.</p>
+</footer>
+
+<script>
+
+function openGoal(type){
+
+const title=document.getElementById("goalTitle");
+const content=document.getElementById("goalContent");
+const modal=document.getElementById("goalModal");
+
+const goals={
+
+steps:{
+title:"🎯 Daily Steps",
+content:`
+<p><b>Target:</b> 10,000 Steps</p>
+<p><b>Completed:</b> 7,200 Steps</p>
+<p><b>Remaining:</b> 2,800 Steps</p>
+<p><b>Progress:</b> 72%</p>
+`
+},
+
+calories:{
+title:"🔥 Weekly Calories",
+content:`
+<p><b>Target:</b> 15,000 kcal</p>
+<p><b>Burned:</b> 10,200 kcal</p>
+<p><b>Remaining:</b> 4,800 kcal</p>
+<p><b>Progress:</b> 68%</p>
+`
+},
+
+workout:{
+title:"🏃 Workout Goal",
+content:`
+<p><b>Target:</b> 5 Workouts</p>
+<p><b>Completed:</b> 4 Workouts</p>
+<p><b>Remaining:</b> 1 Workout</p>
+<p><b>Progress:</b> 80%</p>
+`
+}
+
+};
+
+title.innerHTML=goals[type].title;
+content.innerHTML=goals[type].content;
+modal.style.display="block";
+
+}
+
+function closeModal(){
+document.getElementById("goalModal").style.display="none";
+}
+
+window.onclick=function(event){
+const modal=document.getElementById("goalModal");
+if(event.target===modal){
+modal.style.display="none";
+}
+};
+
+</script>
+
+    <script src="daily-log.js"></script>
+</body>
+</html>

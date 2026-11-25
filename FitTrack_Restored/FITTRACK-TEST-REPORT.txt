@@ -1,0 +1,34 @@
+FITTRACK REPAIR / ENHANCEMENT CHECK REPORT
+Date: 25 November 2026
+
+SOURCE INSPECTION
+- Extracted and inspected the supplied FitTrack_Repaired.zip.
+- Existing project contained 16 HTML pages plus CSS and JavaScript, an earlier repair README and test report.
+- Preserved existing tracker pages and assets; added public-facing pages and demo flows.
+
+
+CHANGES IN THIS PASS
+1. Added index.html as the public landing page (features, workouts, plan preview, FAQ and CTA).
+2. Added plans.html with Free and Premium demo comparison.
+3. Added register.html with basic form validation, password confirmation and duplicate-email prevention for browser-local demo accounts.
+4. Updated login.html to authenticate registered demo accounts and use fixed demo admin credentials.
+5. Added profile.html with profile fields stored under an email-specific localStorage key.
+6. Added workout-details.html with a query-selected workout timer and completion logging.
+7. Updated workout-library links to the new workout details timer.
+8. Added login checks to fitness.html and user.html.
+9. Updated selected Home/Profile navigation links and documented demo limitations.
+
+
+AUTOMATED CHECKS RUN
+- HTML files scanned: 21.
+- Local href/src references: no missing local files detected.
+- Duplicate HTML IDs: none detected.
+- JavaScript syntax checks (external and inline scripts): passed.
+
+
+NOT VERIFIED / LIMITATIONS
+- No graphical browser automation was available; no full click-through, visual, responsive, accessibility, or console testing is claimed.
+- Existing fitness metrics in legacy pages still use shared localStorage keys, so different demo users can share those records. Profile fields are email-keyed.
+- Authentication and role restrictions are front-end demonstrations and can be bypassed. Demo admin credentials are embedded in source.
+- No backend/database, secure session, cloud sync, payment processing, or production-grade premium enforcement.
+- The workout-details page records workout completion in local browser storage; legacy workout timer pages are preserved.

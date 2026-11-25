@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FitTrack Login</title>
+
+    <link rel="stylesheet" href="login.css">
+
+    <style>
+        .login-mode {
+            display: flex;
+            gap: 8px;
+            margin: 0 0 12px;
+            padding: 5px;
+            background: #eaf7f0;
+            border-radius: 12px;
+        }
+
+        .mode-btn {
+            flex: 1;
+            border: 0;
+            padding: 11px 12px;
+            border-radius: 9px;
+            background: transparent;
+            color: #416154;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all .2s;
+        }
+
+        .mode-btn.active {
+            background: #0e9b69;
+            color: white;
+            box-shadow: 0 4px 12px #0e9b6930;
+        }
+
+        .mode-note {
+            font-size: 13px;
+            color: #547266;
+            margin: 0 0 12px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-page">
+        <div class="login-card">
+
+            <div class="login-logo">
+                Fit<span>Track</span>
+            </div>
+
+            <h1>Welcome Back! 👋</h1>
+
+            <p class="login-subtitle">
+                Login to continue your fitness journey.
+            </p>
+
+            <div class="login-mode" role="tablist" aria-label="Choose account type">
+                <button type="button"
+                        class="mode-btn active"
+                        id="userMode"
+                        aria-selected="true">
+                    User Login
+                </button>
+
+                <button type="button"
+                        class="mode-btn"
+                        id="adminMode"
+                        aria-selected="false">
+                    Admin Login
+                </button>
+            </div>
+
+            <p id="modeNote" class="mode-note">
+                Sign in with your FitTrack user account.
+            </p>
+
+            <button type="button"
+                    id="registerAdminBtn"
+                    class="mode-btn"
+                    style="display:none;width:100%;margin:0 0 12px;background:#fff;border:1px solid #c9ead8">
+                Register New Admin
+            </button>
+
+            <p class="login-note">
+                Demo sign-in: Demo accounts are stored in this browser only.
+                Not secure authentication.
+            </p>
+
+            <form id="loginForm">
+
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required>
+                </div>
+
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Enter your password"
+                        required>
+                </div>
+
+                <div class="login-options">
+
+                    <label class="remember">
+                        <input type="checkbox" id="remember">
+                        Remember me
+                    </label>
+
+                    <a href="#"
+                       onclick="alert('Password recovery will be available after backend authentication is added.'); return false;">
+                        Forgot Password?
+                    </a>
+
+                </div>
+
+                <button type="submit" class="login-submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p id="loginMessage" class="login-message"></p>
+
+            <div class="signup-text">
+                Don't have an account?
+                <a href="register.html">Create Account</a>
+            </div>
+
+            <a href="index.html" class="back-dashboard">
+                ← Public Home
+            </a>
+
+        </div>
+    </div>
+
+    <script>
+        let selectedMode = 'user';
+
+        const userMode = document.getElementById('userMode');
+        const adminMode = document.getElementById('adminMode');
+        const modeNote = document.getElementById('modeNote');
+        const registerAdminBtn = document.getElementById('registerAdminBtn');
+
+        const readAdmins = () =>
+            JSON.parse(localStorage.getItem('fittrackAdmins') || '[]');
+
+        function setMode(mode) {
+            selectedMode = mode;
+
+            userMode.classList.toggle('active', mode === 'user');
+            adminMode.classList.toggle('active', mode === 'admin');
+
+            userMode.setAttribute('aria-selected', mode === 'user');
+            adminMode.setAttribute('aria-selected', mode === 'admin');
+
+            modeNote.textContent = mode === 'admin'
+                ? 'Use your registered admin account to sign in.'
+                : 'Sign in with your FitTrack user account.';
+
+            registerAdminBtn.style.display =
+                mode === 'admin' ? 'block' : 'none';
+        }
+
+        userMode.addEventListener('click', () => setMode('user'));
+        adminMode.addEventListener('click', () => setMode('admin'));
+
+        // Register new admin
+        registerAdminBtn.addEventListener('click', () => {
+
+            const gate = prompt(
+                'Enter the admin registration password to continue:'
+            );
+
+            if (gate !== 'suryabhai') {
+                alert('Incorrect admin registration password.');
+                return;
+            }
+
+            const name = prompt('New admin full name:');
+            if (!name || !name.trim()) return;
+
+            const email = prompt('New admin email:');
+            if (!email || !email.trim() || !email.includes('@')) {
+                alert('Please enter a valid email.');
+                return;
+            }
+
+            const password = prompt(
+                'Set a password for this admin (minimum 6 characters):'
+            );
+
+            if (!password || password.length < 6) {
+                alert('Password must be at least 6 characters.');
+                return;
+            }
+
+            const admins = readAdmins();
+
+            if (admins.some(a =>
+                (a.email || '').toLowerCase() === email.trim().toLowerCase()
+            )) {
+                alert('An admin with that email already exists.');
+                return;
+            }
+
+            admins.push({
+                name: name.trim(),
+                email: email.trim().toLowerCase(),
+                password: password
+            });
+
+            localStorage.setItem(
+                'fittrackAdmins',
+                JSON.stringify(admins)
+            );
+
+            alert(
+                'Admin registered in this browser. They can now log in using Admin Login.'
+            );
+        });
+
+        // Login handling
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+
+            event.preventDefault();
+
+            const email = document.getElementById('email')
+                .value.trim().toLowerCase();
+
+            const password = document.getElementById('password').value;
+
+            const message = document.getElementById('loginMessage');
+
+            if (!email || !password) {
+                message.textContent = 'Enter both email and password.';
+                message.style.color = '#b42318';
+                return;
+            }
+
+            const adminEmail = 'admin@fittrack.demo';
+            const adminPassword = 'Admin123!';
+
+            const accounts = JSON.parse(
+                localStorage.getItem('fittrackDemoAccounts') || '[]'
+            );
+
+            const admins = readAdmins();
+
+            let role = 'user';
+            let accountName = '';
+            let matched = false;
+
+            // Admin login
+            if (selectedMode === 'admin') {
+
+                if (email === adminEmail && password === adminPassword) {
+                    role = 'admin';
+                    accountName = 'FitTrack Demo Admin';
+                    matched = true;
+
+                } else {
+                    const a = admins.find(x =>
+                        (x.email || '').toLowerCase() === email &&
+                        x.password === password
+                    );
+
+                    if (a) {
+                        role = 'admin';
+                        accountName = a.name || email;
+                        matched = true;
+                    }
+                }
+
+            } else if (email !== adminEmail) {
+
+                // User login
+                const account = accounts.find(a =>
+                    (a.email || '').toLowerCase() === email &&
+                    a.password === password
+                );
+
+                if (account) {
+                    accountName = account.name || email;
+                    matched = true;
+
+                } else if (password.length > 0) {
+                    accountName = email.split('@')[0];
+                    matched = true;
+                }
+            }
+
+            if (!matched) {
+                message.textContent = selectedMode === 'admin'
+                    ? 'Admin credentials are incorrect.'
+                    : 'User login failed. Check your account details or register.';
+
+                message.style.color = '#b42318';
+                return;
+            }
+
+            // Save login information
+            localStorage.setItem('loggedIn', 'true');
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userRole', role);
+            localStorage.setItem('userName', accountName);
+
+            // Record access log
+            const logs = JSON.parse(
+                localStorage.getItem('fittrackAccessLogs') || '[]'
+            );
+
+            logs.push({
+                name: accountName,
+                email: email,
+                role: role,
+                accessedAt: new Date().toISOString()
+            });
+
+            localStorage.setItem(
+                'fittrackAccessLogs',
+                JSON.stringify(logs)
+            );
+
+            message.textContent = 'Login successful. Opening your dashboard…';
+            message.style.color = '#00b894';
+
+            setTimeout(() => {
+                location.replace(
+                    role === 'admin' ? 'admin.html' : 'user.html'
+                );
+            }, 180);
+
+        });
+    </script>
+
+</body>
+</html>

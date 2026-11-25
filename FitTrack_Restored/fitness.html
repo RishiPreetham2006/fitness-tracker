@@ -1,0 +1,951 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>FitTrack - Fitness Tracker</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="logo">
+        Fit<span>Track</span>
+    </div>
+
+
+    <nav>
+
+        <a href="index.html" class="active">Home</a>
+
+        <a href="user.html">Dashboard</a>
+
+        <a href="workout.html">Workouts</a>
+
+        <a href="weekly-progress.html">Progress</a>
+
+        <a href="fitness.html#goals">Goals</a>
+
+        <a href="bmi.html">BMI</a>
+         <a href="weekly-progress.html">Weekly Report</a>
+
+    </nav>
+
+
+    <button
+        class="login-btn"
+        onclick="window.location.href='login.html'">
+
+        Login
+
+    </button>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section id="home" class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+
+            Track Your Fitness.
+            <br>
+
+            <span>Transform Your Life.</span>
+
+        </h1>
+
+
+        <p>
+
+            Monitor your workouts, steps, calories,
+            water intake, sleep and fitness goals
+            in one simple dashboard.
+
+        </p>
+
+
+        <button
+            class="primary-btn"
+            onclick="scrollToSection('dashboard')">
+
+            Start Tracking
+
+        </button>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <div class="circle-progress">
+
+            <strong>75%</strong>
+
+            <small>Daily Goal</small>
+
+        </div>
+
+
+        <h3>Today's Progress</h3>
+
+
+        <p>
+
+            Keep going! You are doing great.
+
+        </p>
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= DASHBOARD ================= -->
+
+<section id="dashboard" class="section">
+
+    <div class="section-title">
+
+        <h2>Fitness Dashboard</h2>
+
+        <p>
+            Your daily health overview
+        </p>
+
+    </div>
+
+
+
+    <div class="stats-grid">
+
+
+        <!-- STEPS -->
+
+        <div class="stat-card">
+
+            <div class="icon">
+                👟
+            </div>
+            
+
+            <h3>
+                Steps
+            </h3>
+            
+
+            <p id="stepsValue">
+                7,250
+            </p>
+
+            <small>
+                Goal: 10,000 steps
+            </small>
+
+
+            <div class="progress">
+
+                <div
+                    id="stepsProgress"
+                    style="width:72%">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- CALORIES -->
+
+        <div class="stat-card">
+
+            <div class="icon">
+                🔥
+            </div>
+
+            <h3>
+                Calories
+            </h3>
+
+            <p id="caloriesValue">
+                1,850
+            </p>
+
+            <small>
+                Goal: 2,500 kcal
+            </small>
+
+
+            <div class="progress">
+
+                <div
+                    id="calorieProgress"
+                    style="width:74%">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- WATER -->
+
+        <div class="stat-card">
+
+            <div class="icon">
+                💧
+            </div>
+
+            <h3>
+                Water
+            </h3>
+
+            <p id="waterValue">
+                5
+            </p>
+
+            <small>
+                Goal: 8 glasses
+            </small>
+
+
+            <div class="progress">
+
+                <div
+                    id="waterProgress"
+                    style="width:62%">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- SLEEP -->
+
+        <div class="stat-card">
+
+            <div class="icon">
+                😴
+            </div>
+
+            <h3>
+                Sleep
+            </h3>
+
+            <p id="sleepValue">
+                7.5 hrs
+            </p>
+
+            <small>
+                Goal: 8 hours
+            </small>
+
+
+            <div class="progress">
+
+                <div
+                    id="sleepProgress"
+                    style="width:94%">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================= QUICK ACTIONS ================= -->
+
+    <div class="quick-actions">
+
+
+        <button
+            onclick="window.location.href='step.html'">
+
+            ➕ Add Steps
+
+        </button>
+        
+
+
+        <button
+            onclick="window.location.href='water.html'">
+
+            💧 Add Water
+
+        </button>
+
+
+        <button
+            onclick="window.location.href='calories.html'">
+
+            🔥 Add Calories
+
+        </button>
+
+
+        <button
+            onclick="window.location.href='sleep.html'">
+
+            😴 Add Sleep
+
+        </button>
+
+
+        <button
+            onclick="resetData()">
+
+            🔄 Reset Today
+
+        </button>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= WORKOUTS ================= -->
+
+<section
+    id="workouts"
+    class="section light-section">
+
+
+    <div class="section-title">
+
+        <h2>
+            Workout Tracker
+        </h2>
+
+        <p>
+            Choose your workout and track your activity
+        </p>
+
+    </div>
+
+
+
+    <div class="workout-grid">
+
+
+        <!-- RUNNING -->
+
+        <div class="workout-card">
+
+            <div class="workout-icon">
+                🏃
+            </div>
+
+            <h3>
+                Running
+            </h3>
+
+            <p>
+                30 Minutes
+            </p>
+
+            <strong>
+                300 Calories
+            </strong>
+
+
+            <!-- CHANGED: NO POPUP -->
+
+            <button
+                onclick="window.location.href='running.html'">
+
+                Start Workout
+
+            </button>
+
+        </div>
+
+
+
+        <!-- CYCLING -->
+
+        <div class="workout-card">
+
+            <div class="workout-icon">
+                🚴
+            </div>
+
+            <h3>
+                Cycling
+            </h3>
+
+            <p>
+                45 Minutes
+            </p>
+
+            <strong>
+                400 Calories
+            </strong>
+
+
+            <!-- CHANGED: NO POPUP -->
+
+            <button
+                onclick="window.location.href='cycling.html'">
+
+                Start Workout
+
+            </button>
+
+        </div>
+
+
+
+        <!-- WEIGHT TRAINING -->
+
+        <div class="workout-card">
+
+            <div class="workout-icon">
+                🏋️
+            </div>
+
+            <h3>
+                Weight Training
+            </h3>
+
+            <p>
+                45 Minutes
+            </p>
+
+            <strong>
+                350 Calories
+            </strong>
+
+
+            <!-- CHANGED: NO POPUP -->
+
+            <button
+                onclick="window.location.href='weight-training.html'">
+
+                Start Workout
+
+            </button>
+
+        </div>
+
+
+
+        <!-- YOGA -->
+
+        <div class="workout-card">
+
+            <div class="workout-icon">
+                🧘
+            </div>
+
+            <h3>
+                Yoga
+            </h3>
+
+            <p>
+                30 Minutes
+            </p>
+
+            <strong>
+                150 Calories
+            </strong>
+
+
+            <!-- CHANGED: NO POPUP -->
+
+            <button
+                onclick="window.location.href='yoga.html'">
+
+                Start Workout
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ================= WORKOUT HISTORY ================= -->
+
+    <div class="workout-log">
+
+        <h3>
+            Workout History
+        </h3>
+
+
+        <ul id="workoutList">
+
+            <li>
+
+                Running
+
+                <span>
+                    300 kcal
+                </span>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= BMI ================= -->
+
+<section
+    id="bmi"
+    class="section">
+
+
+    <div class="section-title">
+
+        <h2>
+            BMI Calculator
+        </h2>
+
+        <p>
+            Check your Body Mass Index
+        </p>
+
+    </div>
+
+
+
+    <div class="bmi-container">
+
+
+        <div class="bmi-form">
+
+
+            <label>
+                Height (cm)
+            </label>
+
+
+            <input
+                type="number"
+                id="height"
+                placeholder="Enter height">
+
+
+            <label>
+                Weight (kg)
+            </label>
+
+
+            <input
+                type="number"
+                id="weight"
+                placeholder="Enter weight">
+
+
+            <button
+                class="primary-btn"
+                onclick="calculateBMI()">
+
+                Calculate BMI
+
+            </button>
+
+
+        </div>
+
+
+
+        <div class="bmi-result">
+
+            <h3>
+                Your BMI
+            </h3>
+
+
+            <div id="bmiNumber">
+                --
+            </div>
+
+
+            <p id="bmiMessage">
+
+                Enter your height and weight.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= PROGRESS ================= -->
+
+<section
+    id="progress"
+    class="section light-section">
+    
+
+
+    <div class="section-title">
+
+        <h2>
+            Weekly Progress
+        </h2>
+
+        <p>
+            Monitor your weekly fitness performance
+        </p>
+          <button onclick="window.location.href='weekly-progress.html'">
+        📊 View Weekly Report
+    </button>
+       
+        
+       
+</button>
+
+
+    </div>
+
+
+
+    <div class="chart">
+
+
+        <div class="bar-container">
+
+            <div
+                class="bar"
+                style="height:65%">
+            </div>
+
+            <span>Mon</span>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div
+                class="bar"
+                style="height:80%">
+            </div>
+
+            <span>Tue</span>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div
+                class="bar"
+                style="height:55%">
+            </div>
+
+            <span>Wed</span>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div
+                class="bar"
+                style="height:90%">
+            </div>
+
+            <span>Thu</span>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div
+                class="bar"
+                style="height:75%">
+            </div>
+
+            <span>Fri</span>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div
+                class="bar"
+                style="height:95%">
+            </div>
+
+            <span>Sat</span>
+
+        </div>
+
+
+        <div class="bar-container">
+
+            <div
+                class="bar"
+                style="height:70%">
+            </div>
+
+            <span>Sun</span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= GOALS ================= -->
+
+<section
+    id="goals"
+    class="section">
+
+
+    <div class="section-title">
+
+        <h2>
+            Fitness Goals
+        </h2>
+
+        <p>
+            Set goals and stay motivated
+        </p>
+
+    </div>
+
+
+
+    <div class="goal-container">
+
+
+        <!-- DAILY STEPS -->
+
+        <div class="goal-card">
+
+            <h3>
+                🎯 Daily Steps
+            </h3>
+
+            <p>
+                10,000 steps
+            </p>
+
+
+            <div class="progress">
+
+                <div
+                    style="width:72%">
+                </div>
+
+            </div>
+
+
+            <span>
+                72% Complete
+            </span>
+
+        </div>
+
+
+
+        <!-- CALORIES -->
+
+        <div class="goal-card">
+
+            <h3>
+                🔥 Weekly Calories
+            </h3>
+
+            <p>
+                15,000 kcal
+            </p>
+
+
+            <div class="progress">
+
+                <div
+                    style="width:68%">
+                </div>
+
+            </div>
+
+
+            <span>
+                68% Complete
+            </span>
+
+        </div>
+
+
+
+        <!-- WORKOUT -->
+
+        <div class="goal-card">
+
+            <h3>
+                🏃 Workout Goal
+            </h3>
+
+            <p>
+                5 workouts / week
+            </p>
+
+
+            <div class="progress">
+
+                <div
+                    style="width:80%">
+                </div>
+
+            </div>
+
+
+            <span>
+                4 / 5 Completed
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- ================= MOTIVATION ================= -->
+
+<section class="motivation">
+
+    <h2>
+        “Success starts with self-discipline.”
+    </h2>
+
+
+    <p>
+
+        Every step, every workout and every healthy
+        choice takes you closer to your goal.
+
+    </p>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+
+        <h2>
+            FitTrack
+        </h2>
+
+
+        <p>
+            Your personal fitness tracking companion.
+        </p>
+
+
+
+        <div class="footer-links">
+
+            <a href="fitness.html">
+                Home
+            </a>
+
+            <a href="user.html">
+                Dashboard
+            </a>
+
+            <a href="workout.html">
+                Workouts
+            </a>
+
+            <a href="weekly-progress.html">
+                Progress
+            </a>
+
+            <a href="fitness.html#goals">
+                Goals
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <p class="copyright">
+
+        © 2026 FitTrack. All Rights Reserved.
+
+    </p>
+
+</footer>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>if(localStorage.getItem("loggedIn")!=="true" || localStorage.getItem("userRole")!=="user"){location.replace("login.html");}</script>
+<script src="script.js"></script>
+
+
+    <script src="daily-log.js"></script>
+<script src="fittrack-nav.js"></script>
+</body>
+
+</html>
+```

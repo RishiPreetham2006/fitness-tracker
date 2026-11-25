@@ -1,0 +1,1012 @@
+/* =========================================
+   FITTRACK - MAIN STYLE
+========================================= */
+
+/* ---------- RESET ---------- */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: #f5f7fa;
+    color: #1f2937;
+    line-height: 1.6;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    width: 100%;
+    height: 75px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 7%;
+
+    background: #ffffff;
+
+    position: sticky;
+    top: 0;
+
+    z-index: 1000;
+
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.08);
+}
+
+
+/* LOGO */
+
+.logo {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111827;
+}
+
+.logo span {
+    color: #00b894;
+}
+
+
+/* NAVIGATION */
+
+nav {
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    color: #374151;
+    font-size: 15px;
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #00b894;
+}
+
+
+/* LOGIN BUTTON */
+
+.login-btn {
+    border: none;
+
+    padding: 10px 22px;
+
+    border-radius: 25px;
+
+    background: #00b894;
+
+    color: white;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #009f7f;
+    transform: translateY(-2px);
+
+    box-shadow: 0 7px 18px rgba(0, 184, 148, 0.3);
+}
+
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.hero {
+    min-height: 600px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 80px 8%;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(0, 70, 65, 0.95),
+            rgba(0, 184, 148, 0.75)
+        ),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80");
+
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* HERO CONTENT */
+
+.hero-content {
+    max-width: 650px;
+}
+
+.hero-content h1 {
+    font-size: 55px;
+    line-height: 1.15;
+
+    margin-bottom: 25px;
+}
+
+.hero-content h1 span {
+    color: #80ffe5;
+}
+
+.hero-content p {
+    max-width: 600px;
+
+    font-size: 18px;
+
+    margin-bottom: 30px;
+
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/* PRIMARY BUTTON */
+
+.primary-btn {
+    border: none;
+
+    padding: 14px 28px;
+
+    border-radius: 30px;
+
+    background: #00e5a8;
+
+    color: #073b35;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.25);
+}
+
+
+/* HERO CARD */
+
+.hero-card {
+    width: 310px;
+
+    padding: 35px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background: rgba(255, 255, 255, 0.13);
+
+    border: 1px solid rgba(255, 255, 255, 0.25);
+
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.hero-card h3 {
+    margin-top: 20px;
+
+    font-size: 21px;
+}
+
+.hero-card p {
+    margin-top: 8px;
+
+    color: rgba(255, 255, 255, 0.8);
+}
+
+
+/* CIRCLE PROGRESS */
+
+.circle-progress {
+    width: 150px;
+    height: 150px;
+
+    margin: auto;
+
+    border-radius: 50%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 10px solid rgba(255, 255, 255, 0.25);
+
+    border-top-color: #00e5a8;
+    border-right-color: #00e5a8;
+}
+
+.circle-progress strong {
+    font-size: 34px;
+}
+
+.circle-progress small {
+    font-size: 13px;
+}
+
+
+/* =========================================
+   COMMON SECTION
+========================================= */
+
+.section {
+    padding: 85px 8%;
+    background: white;
+}
+
+.light-section {
+    background: #f4f7f8;
+}
+
+.section-title {
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.section-title h2 {
+    font-size: 36px;
+
+    color: #111827;
+
+    margin-bottom: 8px;
+}
+
+.section-title p {
+    color: #6b7280;
+
+    font-size: 16px;
+}
+
+
+/* =========================================
+   DASHBOARD STAT CARDS
+========================================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.stat-card {
+    padding: 28px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.06);
+
+    transition: 0.3s;
+}
+
+.stat-card:hover {
+    transform: translateY(-7px);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card .icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background: #e8fff8;
+
+    font-size: 25px;
+
+    margin-bottom: 18px;
+}
+
+.stat-card h3 {
+    font-size: 18px;
+
+    color: #374151;
+}
+
+.stat-card p {
+    font-size: 32px;
+
+    font-weight: 800;
+
+    margin: 8px 0;
+
+    color: #111827;
+}
+
+.stat-card small {
+    color: #6b7280;
+}
+
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.progress {
+    width: 100%;
+
+    height: 8px;
+
+    margin-top: 15px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #e5e7eb;
+}
+
+.progress div {
+    height: 100%;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #00b894,
+            #00e5a8
+        );
+}
+
+
+/* =========================================
+   QUICK ACTIONS
+========================================= */
+
+.quick-actions {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 15px;
+
+    margin-top: 40px;
+}
+
+.quick-actions button {
+    border: none;
+
+    padding: 13px 22px;
+
+    border-radius: 12px;
+
+    background: #111827;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.quick-actions button:hover {
+    background: #00b894;
+
+    transform: translateY(-3px);
+}
+
+
+/* =========================================
+   WORKOUT CARDS
+========================================= */
+
+.workout-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 25px;
+}
+
+.workout-card {
+    text-align: center;
+
+    padding: 30px 20px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.06);
+
+    transition: 0.3s;
+}
+
+.workout-card:hover {
+    transform: translateY(-7px);
+}
+
+.workout-icon {
+    font-size: 45px;
+
+    margin-bottom: 15px;
+}
+
+.workout-card h3 {
+    font-size: 20px;
+
+    margin-bottom: 5px;
+}
+
+.workout-card p {
+    color: #6b7280;
+
+    margin-bottom: 8px;
+}
+
+.workout-card strong {
+    display: block;
+
+    color: #00a982;
+
+    margin-bottom: 20px;
+}
+
+.workout-card button {
+    border: none;
+
+    padding: 11px 20px;
+
+    border-radius: 10px;
+
+    background: #00b894;
+
+    color: white;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+.workout-card button:hover {
+    background: #008f76;
+}
+
+
+/* =========================================
+   WORKOUT HISTORY
+========================================= */
+
+.workout-log {
+    max-width: 850px;
+
+    margin: 50px auto 0;
+
+    padding: 25px;
+
+    background: white;
+
+    border-radius: 18px;
+
+    border: 1px solid #e5e7eb;
+}
+
+.workout-log h3 {
+    margin-bottom: 15px;
+}
+
+.workout-log ul {
+    list-style: none;
+}
+
+.workout-log li {
+    display: flex;
+
+    justify-content: space-between;
+
+    padding: 14px 5px;
+
+    border-bottom: 1px solid #eee;
+}
+
+.workout-log li:last-child {
+    border-bottom: none;
+}
+
+.workout-log span {
+    color: #00a982;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   BMI
+========================================= */
+
+.bmi-container {
+    max-width: 900px;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 30px;
+}
+
+.bmi-form,
+.bmi-result {
+    padding: 35px;
+
+    border-radius: 20px;
+
+    background: #f7faf9;
+
+    border: 1px solid #e1ebe8;
+}
+
+.bmi-form label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-weight: bold;
+
+    color: #374151;
+}
+
+.bmi-form input {
+    width: 100%;
+
+    padding: 14px;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 10px;
+
+    outline: none;
+
+    font-size: 15px;
+}
+
+.bmi-form input:focus {
+    border-color: #00b894;
+
+    box-shadow:
+        0 0 0 3px rgba(0, 184, 148, 0.12);
+}
+
+.bmi-result {
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+.bmi-result h3 {
+    font-size: 22px;
+}
+
+#bmiNumber {
+    margin: 15px 0;
+
+    font-size: 55px;
+
+    font-weight: 800;
+
+    color: #00a982;
+}
+
+#bmiMessage {
+    color: #6b7280;
+}
+
+
+/* =========================================
+   WEEKLY CHART
+========================================= */
+
+.chart {
+    height: 350px;
+
+    max-width: 900px;
+
+    margin: auto;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-around;
+
+    padding: 30px;
+
+    border-bottom: 2px solid #d1d5db;
+
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.05);
+}
+
+.bar-container {
+    height: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: flex-end;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.bar {
+    width: 45px;
+
+    min-height: 20px;
+
+    border-radius: 8px 8px 0 0;
+
+    background:
+        linear-gradient(
+            to top,
+            #00b894,
+            #00e5a8
+        );
+
+    transition: 0.4s;
+}
+
+.bar:hover {
+    transform: scaleY(1.05);
+}
+
+.bar-container span {
+    color: #6b7280;
+
+    font-size: 13px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   GOALS
+========================================= */
+
+.goal-container {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 25px;
+}
+
+.goal-card {
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid #e5e7eb;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.06);
+}
+
+.goal-card h3 {
+    margin-bottom: 12px;
+}
+
+.goal-card p {
+    color: #6b7280;
+
+    margin-bottom: 10px;
+}
+
+.goal-card span {
+    display: block;
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #00a982;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   MOTIVATION
+========================================= */
+
+.motivation {
+    padding: 90px 8%;
+
+    text-align: center;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #00695c,
+            #00b894
+        );
+}
+
+.motivation h2 {
+    font-size: 35px;
+
+    margin-bottom: 15px;
+}
+
+.motivation p {
+    max-width: 700px;
+
+    margin: auto;
+
+    color: rgba(255, 255, 255, 0.9);
+
+    font-size: 17px;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+footer {
+    background: #111827;
+
+    color: white;
+
+    padding: 55px 8% 25px;
+
+    text-align: center;
+}
+
+.footer-content h2 {
+    font-size: 28px;
+
+    color: #00e5a8;
+
+    margin-bottom: 10px;
+}
+
+.footer-content p {
+    color: #9ca3af;
+}
+
+.footer-links {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 25px;
+
+    margin-top: 25px;
+}
+
+.footer-links a {
+    color: #d1d5db;
+
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: #00e5a8;
+}
+
+.copyright {
+    margin-top: 35px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid #374151;
+
+    color: #9ca3af;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .stats-grid,
+    .workout-grid {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .goal-container {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 45px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .header {
+        height: auto;
+
+        padding: 18px 5%;
+
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+    nav {
+        order: 3;
+
+        width: 100%;
+
+        justify-content: center;
+
+        flex-wrap: wrap;
+
+        gap: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+
+        gap: 50px;
+
+        text-align: center;
+
+        padding: 70px 6%;
+    }
+
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .bmi-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .stats-grid,
+    .workout-grid,
+    .goal-container {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 65px 5%;
+    }
+
+    .section-title h2 {
+        font-size: 30px;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+    }
+
+    .hero-card {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .chart {
+        height: 280px;
+
+        padding: 15px;
+    }
+
+    .bar {
+        width: 28px;
+    }
+
+    .quick-actions {
+        flex-direction: column;
+    }
+
+    .quick-actions button {
+        width: 100%;
+    }
+
+}
+/* FitTrack subtle polish: preserve the existing green palette and add consistent motion */
+@keyframes fittrackPageIn { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
+body { animation: fittrackPageIn 260ms ease-out both; }
+button, .login-btn, .workout-button, .card, .dashboard-card, .box, nav a, input, select, textarea {
+    transition: color 200ms ease, background-color 200ms ease, border-color 200ms ease,
+                box-shadow 220ms ease, transform 220ms ease, opacity 200ms ease;
+}
+button:hover, .login-btn:hover, .workout-button:hover { transform: translateY(-1px); }
+.card:hover, .dashboard-card:hover { box-shadow: 0 14px 28px rgba(0, 115, 75, .12); }
+input:focus, select:focus, textarea:focus { outline: 2px solid rgba(0, 184, 148, .38); outline-offset: 1px; }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
